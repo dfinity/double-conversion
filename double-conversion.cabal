@@ -33,24 +33,6 @@ extra-source-files:
     README.markdown
     benchmarks/*.cabal
     benchmarks/*.hs
-    double-conversion/*.cmake.in
-    double-conversion/AUTHORS
-    double-conversion/CMakeLists.txt
-    double-conversion/COPYING
-    double-conversion/Changelog
-    double-conversion/LICENSE
-    double-conversion/Makefile
-    double-conversion/README
-    double-conversion/SConstruct
-    double-conversion/src/*.cc
-    double-conversion/src/*.h
-    double-conversion/src/CMakeLists.txt
-    double-conversion/src/SConscript
-    double-conversion/test/CMakeLists.txt
-    double-conversion/test/cctest/*.cc
-    double-conversion/test/cctest/*.h
-    double-conversion/test/cctest/CMakeLists.txt
-    double-conversion/test/cctest/SConscript
     include/*.h
     tests/*.hs
 
@@ -62,14 +44,12 @@ flag developer
 library
   c-sources:
     cbits/hs-double-conversion.cc
-    double-conversion/src/bignum.cc
-    double-conversion/src/bignum-dtoa.cc
-    double-conversion/src/cached-powers.cc
-    double-conversion/src/diy-fp.cc
-    double-conversion/src/double-conversion.cc
-    double-conversion/src/fast-dtoa.cc
-    double-conversion/src/fixed-dtoa.cc
-    double-conversion/src/strtod.cc
+
+  cc-options:
+    -std=c++11
+
+  extra-libraries:
+    primea
 
   if os(windows)
     if arch(x86_64)
@@ -83,7 +63,6 @@ library
       extra-libraries: stdc++
 
   include-dirs:
-    double-conversion/src
     include
 
   exposed-modules:

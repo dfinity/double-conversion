@@ -116,7 +116,7 @@ extern "C"
 int _hs_ToPrecision(double value, char *buf, const int precision)
 {
   StringBuilder builder(buf, kToPrecisionLength);
-  return defaultConverter().ToPrecision(value, precision, &builder)
+  return defaultConverter().ToPrecision(value, precision, NULL, &builder)
     ? builder.position() : -1;
 }
 
